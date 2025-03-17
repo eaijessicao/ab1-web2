@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de moradores</title>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="cadastro, usuários, sistema, formulário">
+    <meta name="description" content="Sistema de cadastro de usuários">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+    <h2>Cadastro do morador</h2>
+    <form action="cadastrarusuario.jsp" method="post">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" required>
+
+        <label for="endereco">Endereço:</label>
+        <input type="text" id="endereco" name="endereco" required>
+
+        <label for="bairro">Bairro:</label>
+        <input type="text" id="bairro" name="bairro" required>
+
+        <label for="numero">Número:</label>
+        <input type="text" id="numero" name="numero" required>
+
+        <label for="telefone">Telefone:</label>
+        <input type="text" id="telefone" name="telefone" required>
+
+        <label for="situacao">Situação do cadastro:</label>
+        <select id="situacao" name="situacao">
+            <option value="pendente">Pendente</option>
+            <option value="aprovado">Aprovado</option>
+            <option value="recusado">Recusado</option>
+        </select>
+
+        <label for="motivo">Motivo:</label>
+        <textarea id="motivo" name="motivo" rows="4"></textarea>
+
+        <button type="submit" style = "font-size: 18px; font-family: "Playfair Display", serif;">Cadastrar</button>
+        <a style="padding-left: 50px;" href="consultausuario.jsp">Consultar moradores cadastrados</a>
+    
+    </form>
+
+
+</body>
+</html>
