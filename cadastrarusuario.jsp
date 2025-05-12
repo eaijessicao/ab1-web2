@@ -1,13 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ page import="java.util.List, java.util.ArrayList, java.util.Map, java.util.HashMap" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.sql.*" %>
+<%@ include file="conexao.jsp" %>
 
 <%
-    List<Map<String, String>> usuarios = (List<Map<String, String>>) session.getAttribute("usuarios");
-    if (usuarios == null) {
-        usuarios = new ArrayList<>();
-        session.setAttribute("usuarios", usuarios);
-    }
-
     String nome = request.getParameter("nome");
     String endereco = request.getParameter("endereco");
     String bairro = request.getParameter("bairro");
@@ -16,34 +11,38 @@
     String situacao = request.getParameter("situacao");
     String motivo = request.getParameter("motivo");
 
-    Map<String, String> usuario = new HashMap<>();
-    usuario.put("nome", nome);
-    usuario.put("endereco", endereco);
-    usuario.put("bairro", bairro);
-    usuario.put("numero", numero);
-    usuario.put("telefone", telefone);
-    usuario.put("situacao", situacao);
-    usuario.put("motivo", motivo);
+    try {
+    	conexao = (Connection) pageContext.getAttribute("conexao");
+        String sql = "INSERT INTO moradores (nome, endereco, bairro, numero, telefone, situacao, motivo) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        PreparedStatement stmt = conexao.prepareStatement(sql);
+        stmt.setString(1, nome);
+        stmt.setString(2, endereco);
+        stmt.setString(3, bairro);
+        stmt.setString(4, numero);
+        stmt.setString(5, telefone);
+        stmt.setString(6, situacao);
+        stmt.setString(7, motivo);
 
-    usuarios.add(usuario);
+        stmt.executeUpdate();
+        stmt.close();
+        conexao.close();
+    } catch (Exception e) {
+        out.println("Erro ao cadastrar: " + e.getMessage());
+    }
 %>
 
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-br">
 <head>
-     <meta charset="UTF-8">
-    <meta name="keywords" content="cadastro, usuários, sistema, formulário">
-    <meta name="description" content="cadastro finalizado">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="UTF-8">
+    <title>Cadastro Concluído</title>
+    <link rel="stylesheet" href="style.css">
+    
+    
 </head>
 <body>
-    
-    <div class="cadastro_container">
-        <h2>Cadastro realizado com sucesso!</h2>
-   
-        <a href="cadastrarusuario.html" class="b-cadastro">Cadastrar outro morador</a>
-        <a href="consultausuario.jsp" class="b-cadastro">Consultar moradores cadastrados</a>
-    </div>
+    <h2>Cadastro realizado com sucesso!</h2>
+    <a href="cadastrarusuario.html">Cadastrar outro morador</a>
+    <a href="consultausuario.jsp">Consultar moradores</a>
 </body>
 </html>
