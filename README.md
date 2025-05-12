@@ -1,19 +1,31 @@
-# Sistema de Cadastro de Moradores
+# 🏠 Sistema de Cadastro de Moradores
 
-Este projeto foi criado para facilitar a gestão do programa **Moradia Legal**, auxiliando no cadastro e acompanhamento dos moradores de forma prática e eficiente.
+Este projeto foi desenvolvido para auxiliar a gestão do programa **Moradia Legal**, permitindo o cadastro, consulta e gerenciamento de moradores de forma simples e eficiente.
 
-## O que o sistema faz
-- Permite o **cadastro** de moradores com informações como nome, endereço, telefone, entre outros.
-- Facilita a **consulta** de moradores cadastrados por meio de uma tabela organizada.
-- Armazena, exclui e atualiza as informações colocadas
+---
 
-## Tecnologias usadas
-- **HTML5** e **CSS3** para estrutura e estilo.
-- **JSP (Java Server Pages)** para a lógica de processamento.
-- **Java** no back-end, gerenciando os dados.
-- **Mysql** para armazenar as informações
+## ✅ Funcionalidades
 
-## Como usar
+- 📋 **Cadastrar** moradores com informações como nome, endereço, telefone, etc.
+- 🔍 **Consultar** moradores cadastrados em uma tabela.
+- ✏️ **Editar** dados de moradores existentes.
+- ❌ **Excluir** moradores do sistema.
+- 💾 Armazena todas as informações no banco de dados MySQL.
+
+---
+
+## 🛠️ Tecnologias Utilizadas
+
+- **HTML5** e **CSS3** – Estrutura e estilo das páginas.
+- **JSP (JavaServer Pages)** – Lógica de exibição.
+- **Java** – Back-end da aplicação.
+- **MySQL** – Banco de dados relacional.
+- **Apache Tomcat** – Servidor de aplicação.
+
+---
+
+## 📚 Como Utilizar
+
 1. **Clone o repositório**:
    ```bash
    git clone https://github.com/eaijessicao/ab1-web2.git
@@ -21,12 +33,11 @@ Este projeto foi criado para facilitar a gestão do programa **Moradia Legal**, 
    - importe para o eclipse ou ide da sua preferência
    - clique em run server com o **Apache Tomcat**
    - ele vai abrir automaticamente o navegador com a pagina carregada
-3.**MYSQL**
-   - Escreva no mysql o seguinte:
-   - 
-CREATE DATABASE IF NOT EXISTS cadastro_moradores;
-USE cadastro_moradores;
-CREATE TABLE IF NOT EXISTS moradores (
+3. **Mysql**
+Digite os seguintes codigos na query:
+-CREATE DATABASE IF NOT EXISTS cadastro_moradores;
+-USE cadastro_moradores;
+-CREATE TABLE IF NOT EXISTS moradores (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
     endereco VARCHAR(150),
@@ -36,8 +47,3 @@ CREATE TABLE IF NOT EXISTS moradores (
     situacao VARCHAR(50),
     motivo VARCHAR(255)
 );
-
-
-  
-
-   
